@@ -23,6 +23,7 @@ Use of Generative AI during the Event
 Generative AI tools may be used throughout the DataKit event to support tasks such as code generation, data visualization, or summarizing documentation. We encourage participants to use these tools responsibly, ensuring transparency about where and how AI has been applied, validating all outputs for accuracy, and maintaining data privacy at all times. The goal is to use GenAI strategically to enhance creativity, collaboration, and efficiency, while ensuring that all final analyses and insights reflect human oversight and ethical data practices.
 
 # How to contribute: Challenges
+- Prep Challenge: Bridging Languages — Translating Farmer Conversations
 - Challenge 1: Identifying patterns in weather and agriculture 
 - Challenge 2: Seasonality
 - Challenge 3: Identifying Community Leaders
