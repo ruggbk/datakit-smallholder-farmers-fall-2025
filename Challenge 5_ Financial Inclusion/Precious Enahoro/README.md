@@ -10,12 +10,22 @@ This project explores how smallholder farmers discuss financial topics such as m
 
 ## Key Findings
 
-### Finding 1: [Title]
-Description of the finding, supported by data and visualizations.
+### Financial conversations make up only 7.74% of all farmer questions, yet they are highly concentrated around market prices.
+
+Although fewer than 1 in 10 farmer questions are financial in nature, the majority of those inquiries focus on market price discovery and market access. Farmers consistently ask:
+
+   - *“How much is X selling for?”*
+   - *“What is the current market price?”*
+   - *“Where can I sell?”*
+   - 
+**This shows that even within a small financial segment, market transparency is the dominant financial need, and price information remains a major friction point for farmers across crops and countries.**
 
 **Implications for Producers Direct:**
-- How this finding can be used
-- What actions it suggests
+Producers Direct should:
+1. Expand coverage of price data across more markets, crops, and regions.
+2. Work with local partners to verify and update prices more frequently.
+3. Develop automated price-insight messages, e.g., price drops, best-selling locations, or price anomalies.
+4. Include price trend visualizations or weekly summaries to reduce repeated questions.
 
 ### Finding 2: [Title]
 Description of the finding, supported by data and visualizations.
