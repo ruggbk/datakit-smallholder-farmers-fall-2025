@@ -75,8 +75,11 @@ gensim                            4.4.0
 #### B: Analysis
 
 4. Count total occurances of each used word, remove numbers and non-english words
+    - Here the amount of times each word occurs within all the questions is calculated. We will use the 'enchant' package to also filter out any words that are not english words (it is important to note that this also eliminates typos, a spellchecker could potentially also be used to prevent this).
 5. Rank occured words by similarity
+   - The 'spacy' and 'en-core-web-lg' packages to calculate cosine similarity of each word to a target word. The target word in this analysis is simply 'sell'. This should give words that relate closely to the selling of things. We will only take the top 25 most similar words as this should exclude questions not related to markets and provide enough data to understand the relationship over time.
 6. Label questions based on word similarity
+   - If a question contains a word in the top 25 most similar words, we will label is as being a question related to selling or markets. Visualizations will be made with the new labelled data.
 
 # Further Questions:
 
