@@ -90,6 +90,19 @@ month-to-month. I also grouped different topic_groups based on relevancy to be o
 same chart. And separate charts were made for Kenya and Uganda. Below are my
 outputs:
 
+#### Kenya Charts
+
+![crop_related_kenya](images/crop_related_kenya.png)
+![animal_related_kenya](images/animal_related_kenya.png)
+![fodder_pest_kenya](images/fodder_pest_kenya.png)
+![tree_related_kenya](images/tree_related_kenya.png)
+
+#### Uganda Charts
+![crop_related_uganda](images/crop_related_uganda.png)
+![animal_related_uganda](images/animal_related_uganda.png)
+![fodder_pest_uganda](images/fodder_pest_uganda.png)
+![tree_related_uganda](images/tree_related_uganda.png)
+
 ---
 
 # Insight
