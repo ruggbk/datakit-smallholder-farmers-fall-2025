@@ -1,0 +1,150 @@
+## "Maize" question cluster assignments from ChatGPT
+
+cluster_to_meta = {
+    0: 1,    # armyworms → Pests & Disease
+    1: 1,    # rats/monkeys → Pests & Disease
+    2: 1,    # weevils → Pests & Disease
+    3: 2,    # soil types → Fertilizer, Soil, & Planting Practices
+    4: 2,    # manure/organic → Fertilizer, Soil, & Planting Practices
+    5: -1,   # unclear/misc seed keywords → Uncategorized / Noise
+    6: 2,    # DAP/NPK fertilizer → Fertilizer, Soil, & Planting Practices
+    7: 2,    # hole/seeds → Fertilizer, Soil, & Planting Practices
+    8: 2,    # spacing → Fertilizer, Soil, & Planting Practices
+    9: 5,    # market prices in Kampala → Market & Price Information
+    10: 2,   # fertilizer questions → Fertilizer, Soil, & Planting Practices
+    11: 5,   # seed price/type in Uganda → Market & Price Information
+    12: 3,   # Kenya seed varieties → Seed Varieties & Regional Adaptation
+    13: 2,   # top dressing → Fertilizer, Soil, & Planting Practices
+    14: 2,   # urea/CAN application → Fertilizer, Soil, & Planting Practices
+    15: 1,   # yellowing leaves/fertility → Pests & Disease
+    16: 2,   # planting distance → Fertilizer, Soil, & Planting Practices
+    17: 2,   # spacing → Fertilizer, Soil, & Planting Practices
+    18: 2,   # CAN application timing → Fertilizer, Soil, & Planting Practices
+    19: 2,   # topdressing timing → Fertilizer, Soil, & Planting Practices
+    20: 2,   # topdress method → Fertilizer, Soil, & Planting Practices
+    21: 3,   # climate-specific seeds → Seed Varieties & Regional Adaptation
+    22: 1,   # smut → Pests & Disease
+    23: 3,   # drought/short rain adaptation → Seed Varieties & Regional Adaptation
+    24: 3,   # county seed variety → Seed Varieties & Regional Adaptation
+    25: 3,   # rain/dry season → Seed Varieties & Regional Adaptation
+    26: 1,   # drying maize → Pests & Disease
+    27: 1,   # caterpillars → Pests & Disease
+    28: 5,   # akg prices → Market & Price Information
+    29: 1,   # fall armyworm → Pests & Disease
+    30: 5,   # market/cost/sell → Market & Price Information
+    31: 4,   # yield per acre → Yield & Farm Output
+    32: 5,   # 1kg price → Market & Price Information
+    33: 4,   # bags harvested → Yield & Farm Output
+    34: 5,   # bag price/market → Market & Price Information
+    35: 5,   # 1kg/90kg price → Market & Price Information
+    36: 5,   # kg/kilo price → Market & Price Information
+    37: 5,   # kg price → Market & Price Information
+    38: 3,   # hybrid seeds → Seed Varieties & Regional Adaptation
+    39: 3,   # Bomet seed types → Seed Varieties & Regional Adaptation
+    40: 3,   # county seed varieties → Seed Varieties & Regional Adaptation
+    41: 3,   # general best seeds → Seed Varieties & Regional Adaptation
+    42: 1,   # yellowing leaves → Pests & Disease
+    43: 3,   # breed/variety → Seed Varieties & Regional Adaptation
+    44: 6,   # maize bran/feed → Animal Feed / Alternative Uses
+    45: 6    # cow feed using maize → Animal Feed / Alternative Uses
+}
+cluster_to_meta = {
+    46: 3,    # Questions about how to cultivate or grow maize → Seed Varieties & Regional Adaptation
+    47: 1,    # Pests affecting maize → Pests & Disease
+    48: 1,    # Diseases affecting maize → Pests & Disease
+    49: 7,    # "Medicine" here is ambiguous, some storage, some plant → Wefarm / Miscellaneous
+    50: 1,    # Spraying medicine for insects/diseases → Pests & Disease
+    51: 2,    # Chemicals to remove weeds → Fertilizer, Soil, & Planting Practices
+    52: 1,    # Pesticides for maize → Pests & Disease
+    53: 1,    # Pestcides / insectcides → Pests & Disease
+    54: 2,    # Weeding practices → Fertilizer, Soil, & Planting Practices
+    55: 2,    # Herbicide use → Fertilizer, Soil, & Planting Practices
+    56: 2,    # Spraying chemicals/fertilizers → Fertilizer, Soil, & Planting Practices
+    57: 7,    # Chemicals for storage protection → Wefarm / Miscellaneous
+    58: 1,    # Preventing weevils and maize disease → Pests & Disease
+    59: 4,    # Maturity timing → Yield & Farm Output
+    60: 3,    # Maize variety and growth speed → Seed Varieties & Regional Adaptation
+    61: 7,    # Preserving maize post-harvest → Wefarm / Miscellaneous
+    62: 7,    # Storage methods → Wefarm / Miscellaneous
+    63: 4,    # Growth duration → Yield & Farm Output
+    64: 4,    # Harvest time → Yield & Farm Output
+    65: 3,    # Types/varieties of maize → Seed Varieties & Regional Adaptation
+    66: 4,    # Causes of poor growth/low yields → Yield & Farm Output
+    67: 4,    # Causes of stunted growth or leaf issues → Yield & Farm Output
+    68: 3,    # Best variety for high yield → Seed Varieties & Regional Adaptation
+    69: 3,    # Best maize for planting → Seed Varieties & Regional Adaptation
+    70: 3,    # Planting type → Seed Varieties & Regional Adaptation
+    71: 3,    # Best type to plant in season → Seed Varieties & Regional Adaptation
+    72: 4,    # Improve production → Yield & Farm Output
+    73: -1,   # Miscellaneous / scientific questions → Uncategorized / Noise
+    74: 4,    # Yield improvement → Yield & Farm Output
+    75: 4,    # Harvesting method → Yield & Farm Output
+    76: 3,    # How to grow → Seed Varieties & Regional Adaptation
+    77: 2,    # Planting procedure → Fertilizer, Soil, & Planting Practices
+    78: 3,    # Growing and protecting maize → Seed Varieties & Regional Adaptation
+    79: 2,    # Intercropping and planting with beans → Fertilizer, Soil, & Planting Practices
+    80: 3,    # Best planting time for growth → Seed Varieties & Regional Adaptation
+    81: 3,    # Planting timing questions → Seed Varieties & Regional Adaptation
+    82: 3,    # Planting season → Seed Varieties & Regional Adaptation
+    83: 1,    # Termites affecting maize → Pests & Disease
+    84: 2,    # Soil pH and suitability → Fertilizer, Soil, & Planting Practices
+    85: 1,    # Rust disease → Pests & Disease
+    86: 6,    # Silage / alternative use → Animal Feed / Alternative Uses
+    87: 1,    # Aphid infestation → Pests & Disease
+    88: 2,    # Spacing and gapping → Fertilizer, Soil, & Planting Practices
+    89: 6,    # Mulching / alternative uses → Animal Feed / Alternative Uses
+    90: 2,    # Fertilizer application / top dressing → Fertilizer, Soil, & Planting Practices
+}
+cluster_to_meta = {
+    91: 3,   # Seed Varieties & Regional Adaptation – swampy-area suitability
+    92: 5,   # Market & Price Information – maize prices in Jinja
+    93: 1,   # Pests & Disease – wilting causes/control
+    94: 3,   # Seed Varieties & Regional Adaptation – altitude-specific varieties
+    95: 3,   # Seed Varieties & Regional Adaptation – Rift Valley varieties
+    96: 5,   # Market & Price Information – maize prices in Kenya/Uganda
+    97: 1,   # Pests & Disease – birds affecting maize
+    98: 1,   # Pests & Disease – aflatoxin prevention/control
+    99: 3,   # Seed Varieties & Regional Adaptation – semi-arid variety suitability
+    100: 3,  # Seed Varieties & Regional Adaptation – Nakuru county varieties
+    101: 3,  # Seed Varieties & Regional Adaptation – Trans Nzoia varieties
+    102: 3,  # Seed Varieties & Regional Adaptation – highland suitability
+    103: 2,  # Fertilizer, Soil, & Planting Practices – moisture/dryness care
+    104: 2,  # Fertilizer, Soil, & Planting Practices – irrigation/drought management
+    105: 3,  # Seed Varieties & Regional Adaptation – Narok county
+    106: 3,  # Seed Varieties & Regional Adaptation – Uasin Gishu highland
+    107: 1,  # Pests & Disease – stalk borer control
+    108: 5,  # Market & Price Information – maize prices, general
+    109: 5,  # Market & Price Information – maize price in Mubende
+    110: 5,  # Market & Price Information – maize/beans prices
+    111: 5,  # Market & Price Information – local bag prices
+    112: 5,  # Market & Price Information – kg/flour prices
+    113: 1,  # Pests & Disease – stalk borer & SMART issues
+    114: 1,  # Pests & Disease – rotting/rot control
+    115: 1,  # Pests & Disease – black heads/dust on maize
+    116: 1,  # Pests & Disease – necrosis/SMART disease
+    117: 1,  # Pests & Disease – streak virus
+    118: 2,  # Fertilizer, Soil, & Planting Practices – weed/herbicide use
+    119: 1,  # Pests & Disease – caterpillar control
+    120: 2,  # Fertilizer, Soil, & Planting Practices – chemical spraying
+    121: 3,  # Seed Varieties & Regional Adaptation – seed availability
+    122: 1,  # Pests & Disease – chemicals to control pests/stalk borers
+    123: 2,  # Fertilizer, Soil, & Planting Practices – spraying chemicals
+    124: 3,  # Seed Varieties & Regional Adaptation – Laikipia/Nyeri seeds
+    125: 4,  # Yield & Farm Output – cobs per plant
+    126: 3,  # Seed Varieties & Regional Adaptation – Western region varieties
+    127: 2,  # Fertilizer, Soil, & Planting Practices – germination issues
+    128: 1,  # Pests & Disease – leaf curling (likely disease/stress)
+    129: 2,  # Fertilizer, Soil, & Planting Practices – improving plantation care
+    130: 6,  # Animal Feed / Alternative Uses – flour/products from maize
+    131: 4,  # Yield & Farm Output – post-harvest handling
+    132: 4,  # Yield & Farm Output – growth period/harvest timing
+    133: 3,  # Seed Varieties & Regional Adaptation – best variety to plant
+    134: 2,  # Fertilizer, Soil, & Planting Practices – planting season/timing
+    135: 4,  # Yield & Farm Output – improving quality/quantity
+    136: 2,  # Fertilizer, Soil, & Planting Practices – land preparation
+    137: 5,  # Market & Price Information – profitability/financial questions
+    138: 2,  # Fertilizer, Soil, & Planting Practices – planting procedures
+    139: 2,  # Fertilizer, Soil, & Planting Practices – use/benefits of maize
+    140: 7,  # Wefarm Platform / Miscellaneous – general advice/farming questions
+}
+
