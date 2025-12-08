@@ -31,7 +31,7 @@ Clusters:
 
 ########### Metacluster assignent for "chicken" questions
 
-Please map these clusters to the proper metacluster using the 'meta_titles' table below. Be sure to choose the best option of the 10, not just the first metacluster label that's a decent fit. If the cluster seems completely unclassifiable, label it with -1. Return the results in a mapping dict like this:
+Please map these clusters to the proper metacluster using the 'meta_titles' table below. Be sure to choose the best option of the 10, not just the first metacluster label that's a decent fit. Prioritize more specific clusters-- for example, a cluster focused on chickens coughing is a better fit for "Pests & Disease", even though it could be classified as "Adult Chicken Health & Behavior". If the cluster seems completely unclassifiable, label it with -1. Return the results in a mapping dict like this:
 cluster_to_meta = {
     0: 4,    # Optional: include short comment justifying choice
     1: 2,    
@@ -55,5 +55,32 @@ meta_titles = {
     9: "Seasonal & Environmental Effects"
 }
 
+Clusters:
+
+########################
+
+##### Metacluster assignment for maize
+
+Please map these clusters to the proper metacluster using the 'meta_titles' table below. Be sure to choose the best option of the 10, not just the first metacluster label that's a decent fit. If the cluster seems completely unclassifiable, label it with -1. Return the results in a mapping dict like this:
+cluster_to_meta = {
+    0: 4,    # Optional: include short comment justifying choice
+    1: 2,    
+    2: 3,    
+    3: 3,    
+    4: 3,    
+    ...
+}
+
+meta_titles_maize = {
+    -1: "Uncategorized / Noise",
+    1: "Pests & Disease",                  # armyworms, caterpillars, weevils, rats/monkeys, smut, yellowing
+    2: "Fertilizer, Soil, & Planting Practices",  # soil types, manure, fertilizers, DAP/NPK, spacing, seeds per hole, top dressing
+    3: "Seed Varieties & Regional Adaptation",    # general seeds, hybrids, region-specific/adaptation, climate
+    4: "Yield & Farm Output",              # expected harvest per acre, bags produced, kgs per acre
+    5: "Market & Price Information",       # maize price per kg/bag, selling markets, economic considerations
+    6: "Animal Feed / Alternative Uses",   # feeding livestock, maize byproducts
+    7: "Wefarm Platform / Miscellaneous"   # platform questions, unclear/miscellaneous queries
+}
 
 Clusters:
+

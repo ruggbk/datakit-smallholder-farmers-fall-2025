@@ -2,6 +2,8 @@ import os
 import joblib
 import pandas as pd
 import numpy as np
+import duckdb
+from pathlib import Path
 # -------------------------------------------------------------------
 # Quick save various files in data directory if they do not already exist
 # -------------------------------------------------------------------
@@ -70,3 +72,81 @@ def save_topic_files(data_dir, topic, clusterer, umap_embedding, df):
         else:
             print(f"{filename} already exists. Skipping save.")
 
+# -------------------------------------------------------------------
+# Save minimal question cluster data with UMAP embeddings to be reattached to full dataset
+# -------------------------------------------------------------------
+
+def save_question_clusters(df, embedding_2d, topic, folder='../data'):
+    """
+    Save minimal question cluster data with UMAP embeddings.
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        Original DataFrame with 'question_id', 'cluster', 'meta_label'.
+    embedding_2d : np.ndarray
+        2D UMAP embeddings (n_rows, 2).
+    topic : str
+        Topic name (e.g., 'unlabeled', 'chicken', 'maize').
+    folder : str
+        Folder to save the Parquet file.
+    """
+    minimal_df = df[['question_id', 'meta_label', 'cluster']].copy()
+    # Downcast integer columns
+    minimal_df = minimal_df.astype({'question_id': 'int32',
+                                    'cluster': 'int32',
+                                    'meta_label': 'int32'})
+    # Add 2D UMAP embeddings as float32
+    minimal_df['umap_x'] = embedding_2d[:, 0].astype('float32')
+    minimal_df['umap_y'] = embedding_2d[:, 1].astype('float32')
+    
+    filename = f"{folder}/question_clusters_{topic}.parquet"
+    minimal_df.to_parquet(filename, index=False)
+    print(f"Saved {filename} ({minimal_df.shape[0]} rows)")
+
+
+# -------------------------------------------------------------------
+# Load and join question data with embeddings
+# -------------------------------------------------------------------
+
+
+def load_clustered_questions(full_path, cluster_path, topic):
+    """
+    Load the large WeFarm 'full dataset' (e.g. "b0cd514b-b9cc-4972-a0c2-c91726e6d825.csv", CSV or Parquet) and join it with the cluster
+    annotation file (always Parquet). Returns a Pandas DataFrame of the joined data.
+    """
+
+    full_path = Path(full_path)
+    cluster_path = Path(cluster_path)
+
+    con = duckdb.connect()
+
+    # Detect the format of the full dataset
+    if full_path.suffix.lower() in ['.csv', '.txt']:
+        full_reader = f"read_csv_auto('{full_path.as_posix()}', HEADER=True)"
+    elif full_path.suffix.lower() in ['.parquet']:
+        full_reader = f"read_parquet('{full_path.as_posix()}')"
+    else:
+        raise ValueError(f"Unsupported full dataset file type: {full_path.suffix}")
+
+    # Build WHERE clause for topic
+    if topic is None:
+        where_clause = "WHERE f.question_topic IS NULL AND f.question_language = 'eng'"
+    else:
+        where_clause = f"WHERE f.question_topic = '{topic}' AND f.question_language = 'eng'"
+
+    # Cluster labels are always Parquet
+    cluster_reader = f"read_parquet('{cluster_path.as_posix()}')"
+
+    query = f"""
+    SELECT f.question_id, f.question_content, c.cluster, c.meta_label, c.umap_x, c.umap_y
+    FROM {full_reader} AS f
+    RIGHT JOIN {cluster_reader} AS c
+    ON f.question_id = c.question_id
+    {where_clause}
+    """
+
+    df = con.execute(query).df()
+    df = df.drop_duplicates(subset='question_id', keep='first')
+
+    return df
