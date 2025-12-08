@@ -1,1 +1,9 @@
+# macOS
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Miscellaneous
+
 Challenge 5_ Financial Inclusion/Eric_Acha/Loading_Data/textSample.csv
