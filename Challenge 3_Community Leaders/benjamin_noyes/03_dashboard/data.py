@@ -41,10 +41,13 @@ def load_pickle_from_s3(key):
     return data
 
 alldata = load_pickle_from_s3("all_dashboard_data.pkl")
+tabs67 = load_pickle_from_s3("tabs67.pkl")
 
 tab1_data = alldata["tab1"]
 tab2_data = alldata["tab2"]
 tab3_data = alldata["tab3"]
 tab4_data = alldata["tab4"]
+tab6_data = tabs67["tab6"]
+tab7_data = tabs67["tab7"]
 
 intersections = load_pickle_from_s3("intersection_groupbys_complete.pkl.gz")

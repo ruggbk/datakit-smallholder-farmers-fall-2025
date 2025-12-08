@@ -179,6 +179,18 @@ h1, h2, h3, h4, h5, h6, p {
     height: 40%;
 }
 
+/* tab6 */
+
+.comp39_scatter_or_heatmap_fig_tab6_card {
+    height: 75vh;
+    width: 75vh;
+}
+
+.tab6_all {
+    display: flex;
+    justify-content: center;
+}
+
 /* tab3 */
 
 .comp22_dropdown_country_tab3 {
@@ -195,6 +207,31 @@ h1, h2, h3, h4, h5, h6, p {
 .comp9_dropdown_tab4_card, .comp16_topic_dropdown_tab4_card, .comp13_cs1_dropdown_tab4_card, .comp18_cs2_dropdown_tab4_card {
     height: 100%
 }
+
+/*tab7*/
+
+.comp42_dropdown_pc_tab7_card {
+    max-width: 30vw;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.comp45_dropdown_flex_tab7 {
+    display: flex;
+    justify-content: center;
+}
+
+.comp44_bigfig_all_pc_tab7 {
+    height: 825px;
+    width: 100%;
+}
+
+.comp43_bigfig_individual_pc_tab7_card {
+    height: 300px;
+    overflow: hidden;
+}
+
+
 
 /* title */
 

@@ -4,7 +4,7 @@ import plotly.graph_objects as go
 import numpy as np
 import json
 
-from charts import tab2_hist_fig, tab2_pie_fig, tab3_bar_bigfig, tab4_broad_bigfig, tab4_niche_bigfig, tab5_funnel_fig
+from charts import tab2_hist_fig, tab2_pie_fig, tab3_bar_bigfig, tab4_broad_bigfig, tab4_niche_bigfig, tab5_funnel_fig, tab6_cooccurring_ratios_scatter, tab6_correlation_heatmap, tab7_individual_pc
 from data import tab2_data, tab3_data, intersections
 from color import basic_layout, segment_colors_dct
 
@@ -58,6 +58,18 @@ def callbacks_master(app):
             *df_segment_lst
         )
 
+############################################## tab 6 (2.25, between 2 and 2.5) ##############################################
+    @app.callback(
+        Output("comp39_scatter_or_heatmap_fig_tab6_OUT", "figure"),
+        Input("comp38_segmented_control_tab_IN", "value")
+    )
+    def callback_tab6_out(segmented_control):
+        if segmented_control=="Scatter":
+            return basic_layout(tab6_cooccurring_ratios_scatter())
+        else:
+            return basic_layout(tab6_correlation_heatmap())
+
+
 ############################################## tab 5 (2.5, between 2 and 3) ##############################################
 
     @app.callback(
@@ -68,7 +80,7 @@ def callbacks_master(app):
         Input("comp19_dropdown_spr_cs_tab5_IN", "value"),
         Input("comp19_dropdown_cs_cs_tab5_IN", "value"),
         Input("comp19_dropdown_ten_cs_tab5_IN", "value")
-        )
+    )
     def callback_tab5_out(country, ua_cs, spr_cs, cs_cs, ten_cs):
         if not country:
             country = tab2_data["Count"]["question_user_country_code"].unique()
@@ -447,3 +459,11 @@ def callbacks_master(app):
         cs2_tab4_style = {"display": "flex"} if cs2_tab4 else {"display": "none"}
 
         return (cs1_tab3_style, cs2_tab3_style, cs1_tab4_style, cs2_tab4_style)
+
+############################################## tab 7 ##############################################
+    @app.callback(
+        Output("comp43_bigfig_individual_pc_tab7_OUT", "figure"),
+        Input("comp42_dropdown_pc_tab7_IN", "value")
+    )
+    def callback_tab7_out(pc):
+        return basic_layout(tab7_individual_pc(pc))

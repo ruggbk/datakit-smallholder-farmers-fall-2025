@@ -6,8 +6,8 @@ from dash_iconify import DashIconify
 import dash_mantine_components as dmc
 _dash_renderer._set_react_version('18.2.0')
 
-from data import tab1_data, tab2_data, tab3_data, tab4_data
-from charts import tab1_geo_fig
+from data import tab1_data, tab2_data, tab3_data, tab4_data, tab7_data
+from charts import tab1_geo_fig, tab7_bigfig_all_pc
 from color import basic_layout, segment_colors_dct
 
 # # # # # # # # # # # # # # basic layout # # # # # # # # # # # # # # 
@@ -194,7 +194,7 @@ comp14_description_text_tab2 = dmc.Card(
         ),
         dmc.Text(
             [
-                "Each segmentation is created on an ordinal scale of 1 to 5, with 1 being low, and being high. Buckets were created manually from analyzing the distribution of the variable."
+                "Each segmentation is created on an ordinal scale of 1 to 5, with 1 being low, and 5 being high. Buckets were created manually from analyzing the distribution of the variable."
             ],
             size="xs",
             c="gray",
@@ -248,6 +248,82 @@ tab2 = html.Div(
         grid_tab2
     ],
     className="a tab2_all"
+)
+
+
+############################################## tab 6 (2.25, between 2 and 2.5) ##############################################
+comp38_segmented_control_tab6 = dmc.Card(
+    [
+        dmc.SegmentedControl(
+            orientation="horizontal",
+            id="comp38_segmented_control_tab_IN",
+            value="Scatter",
+            style={"width": "100%"},
+            data=[
+                {"value": "Scatter", "label": "Scatter"},
+                {"value": "Correlation", "label": "Correlation"},
+            ],
+        ),        
+    ],
+    withBorder=True,
+    radius="md",
+    shadow="sm",
+    className="t comp38_segmented_control_tab6_card"
+)
+
+
+comp39_scatter_or_heatmap_fig_tab6 = dmc.Card(
+    [
+        dcc.Graph(
+            figure={}, id="comp39_scatter_or_heatmap_fig_tab6_OUT")
+    ],
+    withBorder=True,
+    radius="md",
+    shadow="sm",
+    className="t comp39_scatter_or_heatmap_fig_tab6_card"    
+)
+
+# comp40_scatter_heatmap_text_tab6 = dmc.Card(
+#     [
+#         dmc.Text(
+#             [
+#                 "This is text for the scatter"
+#             ],
+#             size="xs",
+#             c="gray",
+#             className="text_standard_intro",
+#             id="comp40_scatter_text_OUT"
+#         ),
+#         dmc.Text(
+#             [
+#                 "This is text for the correlation heatmap"
+#             ],
+#             size="xs",
+#             c="gray",
+#             className="text_standard_intro",
+#             id="comp40_correlation_text_OUT"
+#         ),        
+#     ],
+#     withBorder=True,
+#     radius="md",
+#     shadow="sm",
+#     className="t comp40_scatter_heatmap_text_tab6_card"
+# )
+
+comp41_inner_flex_tab6 = html.Div(
+    [
+    comp38_segmented_control_tab6,
+    comp39_scatter_or_heatmap_fig_tab6,
+    # comp40_scatter_heatmap_text_tab6
+    ],
+    className="comp41_inner_flex_tab6"
+)
+
+tab6 = html.Div(
+    [
+    comp41_inner_flex_tab6
+    ],
+    className="tab6_all"
 )
 
 
@@ -616,6 +692,7 @@ tab3 = html.Div(
     className="a tab3_all"
 )
 
+
 ############################################## tab 4 ##############################################
 comp35_dropdown_country_tab4 = dmc.Card(
     [
@@ -903,7 +980,68 @@ tab4 = html.Div(
     ],
     className="a tab4_all"
 )
+############################################## tab 7 ##############################################
 
+comp44_bigfig_all_pc_tab7 = dmc.Card(
+    [
+        dcc.Graph(
+            figure=basic_layout(tab7_bigfig_all_pc()), 
+            id="comp44_bigfig_all_pc_tab7",
+            # style={"height": "825px"},
+            # responsive=False
+        )
+    ],
+    withBorder=True,
+    shadow="sm",
+    radius="md",
+    className="t comp44_bigfig_all_pc_tab7_card"
+)
+
+comp42_dropdown_pc_tab7 = dmc.Card(
+    [
+        dmc.Select(
+            label="Principal component",
+            placeholder="select...",
+            value="PC1",
+            data=tab7_data["bigfig1"]["pc_names_lst"][::-1],
+            clearable=False,
+            id="comp42_dropdown_pc_tab7_IN"
+        ),            
+    ],
+    withBorder=True,
+    shadow="sm",
+    radius="md",
+    className="t comp42_dropdown_pc_tab7_card"    
+)
+
+
+
+comp45_dropdown_flex_tab7 = html.Div(
+    [
+        comp42_dropdown_pc_tab7
+    ],
+    className="comp45_dropdown_flex_tab7"
+)
+
+comp43_bigfig_individual_pc_tab7 = dmc.Card(
+    [
+        dcc.Graph(figure={}, id="comp43_bigfig_individual_pc_tab7_OUT")
+    ],
+    withBorder=True,
+    shadow="sm",
+    radius="md",
+    className="t comp43_bigfig_individual_pc_tab7_card"    
+)
+
+
+tab7 = html.Div(
+    [
+        comp44_bigfig_all_pc_tab7,
+        comp45_dropdown_flex_tab7,
+        comp43_bigfig_individual_pc_tab7
+    ],
+    className="tab7_all"
+)
 
 # # # # # # # # # # # # # # tabs # # # # # # # # # # # # # # 
 
@@ -921,20 +1059,32 @@ Tabs = html.Div(
                         dmc.TabsTab(
                             "Basic segments",
                             leftSection=DashIconify(icon="material-symbols:modeling-outline-rounded", width=20, color="black", className="icons-2"),
-                            value="Segments"),
+                            value="Segments"
+                        ),
                         dmc.TabsTab(
                             "Custom segments",
                             leftSection=DashIconify(icon="ph:funnel-bold", width=20, color="black", className="icons-2"),
-                            value="Custom"),
+                            value="Custom"
+                        ),
                         dmc.TabsTab(
-                            "Topics",
-                            leftSection=DashIconify(icon="material-symbols:explore-outline-rounded", width=20, color="black", className="icons-2"),
+                            "Topic overview",
+                            leftSection=DashIconify(icon="icon-park-outline:nine-points-connected", width=20, color="black", className="icons-2"),
+                            value="topic_overview"
+                        ),
+                        dmc.TabsTab(
+                            "Topic drilldown",
+                            leftSection=DashIconify(icon="ic:outline-bar-chart", width=20, color="black", className="icons-2"),
                             value="Topics"
                         ),
                         dmc.TabsTab(
-                            "Time",
+                            "Topics over time",
                             leftSection=DashIconify(icon="ph:line-segments", width=20, color="black", className="icons-2"),
                             value="Time"
+                        ),
+                        dmc.TabsTab(
+                            "Topic PCA",
+                            leftSection=DashIconify(icon="bxs:component", width=20, color="black", className="icons-2"),
+                            value="PCA"
                         )
                     ]
                 ),
@@ -945,6 +1095,10 @@ Tabs = html.Div(
                 dmc.TabsPanel(
                     tab2,
                     value="Segments"
+                ),
+                dmc.TabsPanel(
+                    tab6,
+                    value="topic_overview"
                 ),
                 dmc.TabsPanel(
                     tab5,
@@ -958,6 +1112,10 @@ Tabs = html.Div(
                     tab4,
                     value="Time"
                 ),
+                dmc.TabsPanel(
+                    tab7,
+                    value="PCA"
+                )         
             ],
             color="blue",
             value="Geography",

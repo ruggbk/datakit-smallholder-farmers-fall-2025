@@ -6,7 +6,7 @@ import requests
 import json
 
 
-from data import tab1_data, tab2_data, tab3_data, tab4_data, intersections
+from data import tab1_data, tab2_data, tab3_data, tab4_data, intersections, tab6_data, tab7_data
 from color import segment_colors_dct
 
 ############################################## tab 1 ##############################################
@@ -86,6 +86,49 @@ def tab2_pie_fig(country_codes, segmentation_name):
     "title": {"text": f"{", ".join(country_codes)}, {segmentation_name}", "x": 0.5},
     "showlegend": False,
   })
+
+
+############################################## tab 6 (2.25, between 2 and 2.5) ##############################################
+
+def tab6_cooccurring_ratios_scatter():
+  return px.scatter(
+    tab6_data["scatter"],
+    x="pct_1",
+    y="pct_2",
+    color="sum",
+    color_continuous_scale="haline"
+  ).update_traces(
+    customdata=tab6_data["scatter"][["niche_1", "niche_2"]].values,
+    hovertemplate="""
+    %{customdata[0]}: %{x}<br>
+    %{customdata[1]}: %{y}
+    """,
+    marker_symbol="diamond"
+  ).update_layout({
+  "title": {"text": "The majority of topics occur in<br>under 25.8% of questions", "x": 0.5},
+  "xaxis": {"title": "% of occurrence"},
+  "yaxis": {"title": "% of occurrence"},
+})
+
+def tab6_correlation_heatmap():
+  return px.imshow(
+    tab6_data["corr"],
+    text_auto=False,
+    zmin=-1,
+    zmax=1,
+    color_continuous_scale="RdYlBu_r"
+  ).update_traces(
+    xgap=0.5,
+    ygap=0.5
+  ).update_layout({
+  "template": "plotly_white",
+  "title": {"text": f"Similar terms occur together", "x": 0.5},
+  "xaxis":{"showgrid": False, "zeroline": False, "tickfont": {"size": 8}},
+  "yaxis": {"showgrid": False, "zeroline": False, "tickfont": {"size": 8}},
+  "coloraxis": {"colorbar": {"title": "Corr"}}
+})
+
+
 
 ############################################## tab 5 (2.5, between 2 and 3) ##############################################
 
@@ -542,3 +585,142 @@ def tab4_niche_bigfig(
   return bigfig.update_layout({
     "height": 300 * len(niche_category_lst)
   })
+
+############################################## tab 7 ##############################################
+
+def tab7_bigfig_all_pc():
+
+  dct = tab7_data["bigfig1"]
+
+  fig = make_subplots(
+    rows=1, cols=2,
+    column_widths=[0.15, 0.85],
+    specs=[[{"type": "table"}, {"type": "heatmap"}]],
+    horizontal_spacing=0.03
+  )
+
+  fig.add_trace(
+    go.Table(
+      header={
+        "values": ["PC", "Var %"],
+        "height": 23.2,
+        "font": {"size": 8}
+      },
+      cells={
+        "values": [dct["pc_names_lst"][::-1], dct["variance_lst"][::-1]],
+        "height": 23.2,
+        "font": {"size": 8}
+      }
+    ),
+    row=1, col=1
+  )
+
+  fig.add_trace(
+    go.Heatmap(
+      z=dct["comp_scores_lst"],
+      x=dct["niche_collst"],
+      y=dct["pc_names_lst"],
+      colorscale='RdYlBu_r',
+      ygap=12,
+      zmid=0,
+      name=""
+    ),
+    row=1, col=2
+  )
+
+  fig.update_layout({
+    "template": "plotly_white",
+    "title": {"text": "All principal components that explain at least 1% of the variance (top 25)", "x": 0.5},
+    "height": 825,
+    "xaxis": {"tickfont": {"size": 8}},
+    "yaxis": {"tickfont": {"size": 8}, "domain": [0, 0.96]}
+  }).update_yaxes({
+    "showgrid": False  
+  }, row=1, col=2
+  ).update_xaxes({
+    "tickangle": 90,
+    "showgrid": False  
+  }, row=1, col=2
+  )
+
+  return fig
+
+
+def tab7_individual_pc(pc):
+
+  dct = tab7_data["bigfig1"]
+  df = tab7_data["bigfig2"]["scores"].loc[pc, :].reset_index().set_index("index").T
+
+  neg_df = tab7_data["bigfig2"]["pos_neg_counts"][pc]['neg']
+  pos_df = tab7_data["bigfig2"]["pos_neg_counts"][pc]['pos']
+
+  fig = make_subplots(
+    rows=1, cols=3,
+    column_widths=[0.2, 0.6, 0.2],
+    specs=[[{"type": "table"}, {"type": "heatmap"}, {"type": "table"}]],
+    horizontal_spacing=0.02,
+    subplot_titles= (
+      "Segments, negative corr with PC",
+      "",
+      "Segments, positive corr with PC"
+    )
+  )
+
+  fig.add_trace(
+    go.Table(
+      header=dict(
+        values=["S"] + list(neg_df.columns),
+        font=dict(size=9),
+        height=25
+      ),
+      cells=dict(
+        values=[neg_df.index] + [neg_df[col].apply(lambda x: f"{x:.1%}") for col in neg_df.columns],
+        font=dict(size=8),
+        height=20
+      )
+    ),
+    row=1, col=1
+  )
+
+  fig.add_trace(
+    go.Heatmap(
+      y=[pc],
+      x=df.columns,
+      z=df.values,
+      colorscale='RdYlBu_r',
+      zmid=0,
+      zmin=dct["comp_scores_lst"].min(),
+      zmax=dct["comp_scores_lst"].max(),
+      showscale=False,
+      name=""
+    ),
+    row=1, col=2
+  )
+
+  fig.add_trace(
+    go.Table(
+      header=dict(
+        values=["S"] + list(pos_df.columns),
+        font=dict(size=9),
+        height=25
+      ),
+      cells=dict(
+        values=[pos_df.index] + [pos_df[col].apply(lambda x: f"{x:.1%}") for col in pos_df.columns],
+        font=dict(size=8),
+        height=20
+      )
+    ),
+    row=1, col=3
+  )
+
+  fig.update_layout({
+    "title": {"text": f"{pc} loadings", "x": 0.5},
+  }).update_yaxes({
+    "showticklabels": False,
+    "domain": [0.7, 1.0],
+  }, row=1, col=2
+  ).update_xaxes({
+    "tickfont": {"size": 8}
+  }, row=1, col=2)
+
+  return fig

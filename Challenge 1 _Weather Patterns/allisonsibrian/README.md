@@ -15,7 +15,7 @@ Note: Due to the massive dataset size (21M rows), this analysis was conducted on
 ### Data Sources
 - Producers Direct Dataset: Obtained de-duplicated farmer questions split by language (English, Swahili, Luganda, Runyankole).
 - ERA5 Climate Reanalysis Data: Monthly aggregates for Total Precipitation (prcp), Maximum Temperature (tasmax), and Minimum Temperature (tasmin) for Kenya, Uganda, and Tanzania.
-- Global Historical Climatology Network daily (GHCNd): Ground station data (GHCNd) was explored during the initial phase but excluded from the final analysis. EDA revealed that weather stations for the countries would stop recording data. To ensure consistent and reliable data I opted to use ERA5 data in my analysis.
+- Global Historical Climatology Network daily (GHCNd): Ground station data (GHCNd) was explored during the initial phase but excluded from the final analysis. EDA revealed that weather stations would sometimes stop recording data, creating an inconsistent dataset. To ensure consistent and reliable data, I opted to use ERA5 data in my analysis.
 
 ### Approach
 1. **Step 1**: Data processing, loading, and initial exploration
@@ -37,42 +37,43 @@ Note: Due to the massive dataset size (21M rows), this analysis was conducted on
 ## Key Findings
 
 ### Lagged Rainfall (1 Month) is One of the Leading Predictors for 'Pest & Disease' Questions 
-The model identified 1-Month Lagged Rainfall as significantly more predictive than current rainfall. As current rain triggers vegetation growth, farmer's tend to notice pests afterwards.
+The model identified 1-month Lagged Rainfall as significantly more predictive than current rainfall. As current rain triggers vegetation growth, farmers tend to notice pests afterwards.
 
 **Implications for Producers Direct:**
 - To create a pest alert system following this analysis, it would be best to send alerts 3-4 weeks after heavy rainfall events.
-- To improve on this pest and disease alert system, this model can be refined to use weekly aggregations, and intake more data if there are no computational constraints for analysis.
+- To improve on this pest and disease alert system, this model can be refined to use weekly aggregations and intake more data if there are no computational constraints for analysis.
 
 ### Strong Predictive Success for 'Pests & Disease' and 'Market' Topics
-The model for "Pests & Disease" questions achieved a positive R^2 score (0.18) and a "Strong" performance rating, meaning that test RMSE was lower than the standard deviation of the test set
+The model for "Pests & Disease" questions achieved a positive R^2 score (0.18), meaning weather patterns explain 18% of the variance in 'P & D' questions.
 
-'Pest & Disease' RMSE: 18.90
-'Market' RMSE: 22.31
+- The model achieved a "Strong" performance rating for 'Pest & Disease' and 'Market' topics, meaning that the prediction error (RMSE) was lower than the standard deviation of the test set.
+- 'Pest & Disease' RMSE: 18.90
+- 'Market' RMSE: 22.31
 
 **Implications for Producers Direct:**
-- There is a strong confidence in using the model for predicting these topics, and this model can be used to further refine this model by incorporating weekly aggregation and regional data, which can eventually used for future automated systems.
--  Livestock and Crop questions showed higher variance, suggesting they are driven by other factors.
+- There is a strong confidence in using the model as a baseline for predicting these topics. This model can be built upon and refined by incorporating weekly aggregation and regional data, which can eventually be used for future alert automated systems.
+- Livestock and Crop questions showed higher variance; the weather model struggled to capture these fluctuations. Further investigations should be pursued to understand if these topics are driven by other factors (i.e, economic).
 
 ## Visualizations
 
 ###  
-http://localhost:8888/lab/tree/Challenge%201%20_Weather%20Patterns/allisonsibrian/ug_weather_topic_trends.png
+![Visualization 1](ug_weather_topic_trends.png)
 
 **Interpretation**: 
 Although hard to tell, both big and smaller peaks for 'Pests & Disease' questions tend to occur when there is a high rainfall the month before in Uganda.
 
 ### Feature Importance for 'Pests & Disease' Questions
-http://localhost:8888/lab/tree/Challenge%201%20_Weather%20Patterns/allisonsibrian/feature_importances.png
+![Visualization 2](feature_importances.png)
 
 **Interpretation**: 
 This chart shows the model's validation and prediction logic 
 - Year and Month set the baseline volume, meaning that the primary drivers are users using the platform and the seasonal farming calendar.
-- 1-Month Lagged Rainfall and 1-Month Lagged Heat follow showing that vegetation growth and heat creates an incubation period for pests, which could sit at ~ 1 month or less. 
+- 1-Month Lagged Rainfall and 1-Month Lagged Heat follow, showing that vegetation growth and heat create an incubation period for pests, which could sit at ~ 1 month or less. 
 
 ## Limitations and Challenges
 
 ### Data Limitations
-- Weather and Questions were averaged at the country level. Averaging to country level leaves out of micro-climates, and limits the model's ability to predict the exact volume of topic question count.
+- Weather and Questions were averaged at the country level. Averaging to the country-level leaves out micro-climates, and limits the model's ability to predict the exact volume of topic question count.
 - Training on aggregated monthly data points limited the model's ability to learn non-linear patterns.
 
 ### Technical Challenges
@@ -83,13 +84,13 @@ This chart shows the model's validation and prediction logic
 
 ### For Further Analysis
 1. To expand and create a robust pest and disease alert system, it would be best to move from monthly to weekly aggregation. A weekly model would likely increase the R^2 score significantly.
-2. To expand this analysis, incorporating user location would allow for better forecasting as this country-level analysis is masking micro-climates that occur in a country.
+2. To expand this analysis, incorporating user location would allow for better forecasting, as this country-level analysis is masking micro-climates that occur in a country.
 3. Splitting and further specifying topic questions would help (i.e., 'Crops') as different crops have different weather sensitivities.
 
 ### For Producers Direct
-Utilizing the prediction model to create a robust alert or high-risk month or market campaigns can be done by specifying feature attributes and incorporating seasonal farming calendars as Month was a big predictor in predicting 'Pest & Disease' questions. 
+Utilizing the prediction model to create a robust alert or high-risk month or market campaigns can be done by specifying feature attributes and incorporating seasonal farming calendars, as Month was a big predictor in predicting 'Pest & Disease' questions. 
 
-I recommend incorporating regional data in the model, aggregating at a weekly-level and specifying questions to create a stronger model.
+I recommend incorporating regional data in the model, aggregating at a weekly level and specifying questions to create a stronger model.
 
 ## Contact and Collaboration
 
@@ -105,4 +106,4 @@ I recommend incorporating regional data in the model, aggregating at a weekly-le
 - Thanks to Bashir Alsuty for the de-duplicated data split by language files, and Steven Yan for the Comet Scores on translation models for Swahili, Luganda, and Runyankole, as they were used in my pre-processing stage.
 ---
 
-**Last Updated**: November 28th, 2025
+**Last Updated**: December 4, 2025
