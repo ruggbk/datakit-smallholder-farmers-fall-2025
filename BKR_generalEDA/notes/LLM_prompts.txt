@@ -1,0 +1,59 @@
+##### Metacluster assignment of UMAP + HBDSCAN clusters of unlabeled questions #####
+
+Please map these clusters to the proper metacluster using the 'meta_titles' table below. Be sure to choose the best option of the 10, not just the first metacluster label that's a decent fit. If the cluster seems completely unclassifiable, label it with -1. However, keep in mind that many strange clusters that involve things like discussions of sports teams can go in 10: Personal Communication. Return the results in a mapping dict like this:
+cluster_to_meta = {
+    0: 4,    # Mulching → Planting & Growth
+    1: 2,    # Ticks → Pests & Disease
+    2: 3,    # Silage → Animal Husbandry
+    3: 3,    # Honey/beehives → Animal Husbandry
+    4: 3,    # Grazing → Animal Husbandry
+    ...
+}
+
+Here are the metacluster labels:
+meta_titles = {
+    -1: "Uncategorized", 
+    1: "Soil, Fertilizer, & Animal Feed", 
+    2: "Pests & Disease", 
+    3: "Animal Husbandry", 
+    4: "Planting & Growth", 
+    5: "Markets", 
+    6: "Finance & Loans", 
+    7: "Farming Equipment & Materials", 
+    8: "Weather & Environment", 
+    9: "Wefarm Platform",
+    10: "Personal Communication"
+}
+
+Clusters:
+
+########################
+
+########### Metacluster assignent for "chicken" questions
+
+Please map these clusters to the proper metacluster using the 'meta_titles' table below. Be sure to choose the best option of the 10, not just the first metacluster label that's a decent fit. If the cluster seems completely unclassifiable, label it with -1. Return the results in a mapping dict like this:
+cluster_to_meta = {
+    0: 4,    # Optional: include short comment justifying choice
+    1: 2,    
+    2: 3,    
+    3: 3,    
+    4: 3,    
+    ...
+}
+
+Here are the metacluster labels:
+meta_titles = {
+    -1: "Uncategorized",
+    1: "Chick Care & Raising",
+    2: "Nutrition & Feeding",
+    3: "Pests & Disease",
+    4: "Adult Chicken Health & Behavior",
+    5: "Breeds & Genetics",
+    6: "Eggs & Reproduction",
+    7: "Housing & Equipment",
+    8: "Business, Markets, & Starting Poultry Projects",
+    9: "Seasonal & Environmental Effects"
+}
+
+
+Clusters:

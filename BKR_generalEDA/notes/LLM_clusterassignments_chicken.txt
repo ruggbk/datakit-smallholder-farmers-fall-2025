@@ -1,0 +1,142 @@
+## "Chicken" question cluster assignments from ChatGPT
+cluster_to_meta = {
+    0: 1,    # Vaccines are primarily about chick care
+    1: 2,    # Layer feed questions → Nutrition & Feeding
+    2: 1,    # General chick care and health
+    3: 3,    # Coccidiosis is a disease
+    4: 3,    # Newcastle and Gumboro are specific diseases
+    5: 3,    # Fowl pox & typhoid → Pests & Disease
+    6: 3,    # Deworming → disease prevention
+    7: 8,    # Market and profitability → Business
+    8: 2,    # Manure use relates to farm output → could be feeding indirectly
+    9: 3,    # Flu in chickens → Pests & Disease
+    10: 3,   # Coughing chicks → Pests & Disease
+    11: 3,   # Cough in hens → Pests & Disease
+    12: 3,   # Congested breathing / cough → Pests & Disease
+    13: 3,   # Sneezing in chicks → Pests & Disease
+    14: 8,   # Questions about prices & location → Business
+    15: 5,   # Specific breeds (kroilers/kuroilers) → Breeds & Genetics
+    16: 6,   # Layers laying eggs → Eggs & Reproduction
+    17: 6,   # Hen to cock ratio → Reproduction
+    18: 9,   # Cold/rain → Seasonal & Environmental Effects
+    19: 9,   # Heat/warmth in chicks → Seasonal & Environmental Effects
+    20: 2,   # Daily feed amounts → Nutrition & Feeding
+    21: 2,   # Feed types for chicks → Nutrition & Feeding
+    22: 5,   # Selecting best layers → Breeds & Genetics
+    23: 4,   # Eye/wound problems in chicks → Adult Chicken Health & Behavior
+    24: 4,   # Leg problems → Adult Chicken Health & Behavior
+    25: 4,   # Feather problems → Adult Chicken Health & Behavior
+    26: 3,   # Diarrhea/bloody stool → Pests & Disease
+    27: 4,   # Head/wound swelling → Adult Chicken Health & Behavior
+    28: 4,   # Eye infection/pests → Adult Chicken Health & Behavior
+    29: 4,   # Eye issues/blindness → Adult Chicken Health & Behavior
+    30: 3,   # General medicines → Pests & Disease
+    31: 3,   # General disease prevention → Pests & Disease
+    32: 4,   # Sick/dying chickens → Adult Chicken Health & Behavior
+    33: 3,   # Diseases affecting hens → Pests & Disease
+    34: 3,   # Medicines for sick hens → Pests & Disease
+    35: 4,   # Sick/dying hens → Adult Chicken Health & Behavior
+    36: 1,   # Starting/rearing hens → Chick Care & Raising
+    37: 2,   # Making feed → Nutrition & Feeding
+    38: 6,   # Days to lay → Eggs & Reproduction
+    39: 7,   # Building house/start → Housing & Equipment
+    40: 6,   # Egg laying quantity → Eggs & Reproduction
+}
+cluster_to_meta = {
+    41: 1,   # Focused on finding and buying one-day-old layer chicks → Chick Care & Raising
+    42: 5,   # Identifying good layers, breeds → Breeds & Genetics
+    43: 1,   # General chicken rearing guidance → Chick Care & Raising
+    44: 4,   # Castration and handling cocks → Adult Chicken Health & Behavior
+    45: 8,   # Questions about selling and markets → Business, Markets, & Starting Poultry Projects
+    46: 5,   # Breeds and types → Breeds & Genetics
+    47: 3,   # Chicks dying, weak, disease concerns → Pests & Disease
+    48: 8,   # Starting or improving a farm → Business, Markets, & Starting Poultry Projects
+    49: 1,   # How to start keeping chickens → Chick Care & Raising
+    50: 3,   # Chick diseases and prevention → Pests & Disease
+    51: 3,   # Medicines for chicks → Pests & Disease
+    52: 6,   # Laying issues → Eggs & Reproduction
+    53: 5,   # Types of hens → Breeds & Genetics
+    54: 6,   # Egg-laying in male/female, fertility → Eggs & Reproduction
+    55: 8,   # Egg pricing → Business, Markets, & Starting Poultry Projects
+    56: 8,   # Selling cocks → Business, Markets, & Starting Poultry Projects
+    57: 2,   # Hen food/feed → Nutrition & Feeding
+    58: 2,   # Chick food/feed → Nutrition & Feeding
+    59: 1,   # Starting to keep hens → Chick Care & Raising
+    60: 8,   # Market questions for adult hens → Business, Markets, & Starting Poultry Projects
+    61: 2,   # Feed for faster growth → Nutrition & Feeding
+    62: 2,   # Chick growth → Nutrition & Feeding
+    63: 6,   # Incubators, hatching chicks → Eggs & Reproduction
+    64: 6,   # Egg eating behavior → Eggs & Reproduction
+    65: 6,   # Soft egg shells → Eggs & Reproduction
+    66: 1,   # Day-old chick care → Chick Care & Raising
+    67: 1,   # Kienyeji chicks acquisition and mortality → Chick Care & Raising
+    68: 1,   # Day-old chick costs and sources → Chick Care & Raising
+    69: 2,   # Feed for Kienyeji chicks → Nutrition & Feeding
+    70: 1,   # Kienyeji chickens management → Chick Care & Raising
+    71: 6,   # Brooding and hatching eggs → Eggs & Reproduction
+    72: 6,   # Egg laying problems (small, inconsistent) → Eggs & Reproduction
+    73: 6,   # Hens eating eggs → Eggs & Reproduction
+    74: 5,   # Best breed of Kienyeji hens → Breeds & Genetics
+    75: 5,   # Kienyeji breed selection for starting poultry → Breeds & Genetics
+    76: 6,   # Kienyeji egg-laying frequency and issues → Eggs & Reproduction
+    77: 4,   # Stress in chicks → Adult Chicken Health & Behavior
+    78: 2,   # Calcium/mineral deficiency → Nutrition & Feeding
+    79: 3,   # Worms and deworming → Pests & Disease
+    80: 2    # Salt/mineral nutrition questions → Nutrition & Feeding
+}
+cluster_to_meta = {
+    81: 2,   # Focused on vitamins and supplements for chicks → Nutrition & Feeding
+    82: -1,  # Mix of cow and chicken meds, some unclear → Uncategorized
+    83: 6,   # “Cork” seems related to hatching or chicks feeding → Eggs & Reproduction
+    84: 3,   # Antibiotics for disease prevention → Pests & Disease
+    85: 1,   # Protecting chicks from predators → Chick Care & Raising
+    86: 2,   # Glucose supplementation for chicks → Nutrition & Feeding
+    87: 3,   # Respiratory problems and treatment → Pests & Disease
+    88: 2,   # Feed for layers → Nutrition & Feeding
+    89: 2,   # Liquid paraffin given to chicks → Nutrition & Feeding
+    90: 7,   # Cleaning, disinfecting chicken housing → Housing & Equipment
+    91: 2,   # Mixing feed → Nutrition & Feeding
+    92: 3,   # Breathing difficulties in chicks → Pests & Disease
+    93: 7,   # Debeaking → Housing & Equipment / Handling, closest fit is Housing & Equipment
+    94: 2,   # Measuring and feeding chicks → Nutrition & Feeding
+    95: 3,   # Cannibalism prevention → Pests & Disease
+    96: 5,   # Chicken breeds → Breeds & Genetics
+    97: 5,   # Breeds for egg production → Breeds & Genetics
+    98: 2,   # Deworming chicks → Nutrition & Feeding (health maintenance)
+    99: 6,   # Vaccination for chicks → Eggs & Reproduction (health for egg production)
+    100: 3,  # Feather and health problems → Pests & Disease
+    101: 3,  # Causes of chick death → Pests & Disease
+    102: 3,  # Leg problems in chicks → Pests & Disease
+    103: 3,  # Wing problems in chicks → Pests & Disease
+    104: 5,  # Crossbreeding and inbreeding → Breeds & Genetics
+    105: 1,  # General questions about chicks, age, handling → Chick Care & Raising
+    106: 8,  # Kienyeji poultry, food, house, starting projects → Business & Poultry Projects
+    107: 6,  # Egg laying frequency → Eggs & Reproduction
+    108: 1,  # Caring for chickens, general management → Chick Care & Raising
+    109: 3,  # Parasite control → Pests & Disease
+    110: 3,  # Eye/wound diseases → Pests & Disease
+    111: 3,  # Fleas & ticks → Pests & Disease
+    112: 3,  # Lice & mites → Pests & Disease
+    113: 6,  # Fertilization and mating → Eggs & Reproduction
+    114: 3,  # General disease, seasonal effects → Pests & Disease
+    115: 3,  # Sleeping sickness → Pests & Disease
+    116: 3,  # Pecking/eating each other → Pests & Disease
+    117: 9,  # Cold/rainy season effects → Seasonal & Environmental Effects
+    118: 1,  # Brooder preparation → Chick Care & Raising
+    119: -1, # Ducks mixed with chickens, some unclear → Uncategorized
+    120: 1,  # Hen keeping with chicks → Chick Care & Raising
+    121: 8,  # Selling eggs/market questions → Business & Poultry Projects
+    122: 6,  # Laying problems → Eggs & Reproduction
+    123: 8,  # Buying hens/market → Business & Poultry Projects
+    124: 6,  # Hutching eggs → Eggs & Reproduction
+    125: 2,  # Feed for laying chickens → Nutrition & Feeding
+    126: 8,  # Starting poultry project → Business & Poultry Projects
+    127: 8,  # Improving hen quality/production → Business & Poultry Projects
+    128: 6,  # Hatching eggs → Eggs & Reproduction
+    129: 6,  # Egg eating → Eggs & Reproduction
+    130: 5,  # Choosing hens for egg production → Breeds & Genetics
+    131: 6,  # Egg management/keeping → Eggs & Reproduction
+    132: 6,  # Double yolk and egg formation → Eggs & Reproduction
+    133: 6,  # Hen refusing to sit/stop hatching → Eggs & Reproduction
+}
+

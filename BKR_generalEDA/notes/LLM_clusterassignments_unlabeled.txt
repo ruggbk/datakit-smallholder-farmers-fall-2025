@@ -1,0 +1,228 @@
+## Unlabeled questions
+cluster_to_meta = {
+    0: 4,    # Mulching → Planting & Growth
+    1: 2,    # Ticks → Pests & Disease
+    2: 3,    # Silage → Animal Husbandry
+    3: 3,    # Honey/beehives → Animal Husbandry
+    4: 3,    # Grazing → Animal Husbandry
+    5: 3,    # Milk production → Animal Husbandry
+    6: 3,    # Mastitis → Animal Husbandry
+    7: 2,    # Rats/moles → Pests & Disease
+    8: 1,    # Soil pH → Soil, Fertilizer, & Animal Feed
+    9: 2,    # Armyworm → Pests & Disease
+    10: 3,   # Castration/dehorning → Animal Husbandry
+    11: 3,   # Fish pond/fingerlings → Animal Husbandry
+    12: 4,   # Greenhouse → Planting & Growth
+    13: 2,   # Termites/ants → Pests & Disease
+    14: 3,   # Eggs/incubation → Animal Husbandry
+    15: 4,   # Mixed farming/croprotation → Planting & Growth
+    16: 4,   # Pruning/thinning → Planting & Growth
+    17: 6,   # Loan/farm support → Finance & Loans
+    18: 6,   # Wefarm loans → Finance & Loans
+    19: 1,   # Soil sampling/testing → Soil, Fertilizer, & Animal Feed
+    20: 1,   # Soil fertility → Soil, Fertilizer, & Animal Feed
+    21: 1,   # Soil erosion → Soil, Fertilizer, & Animal Feed
+    22: 1,   # Improve soil fertility → Soil, Fertilizer, & Animal Feed
+    23: 1,   # Soil type/clay → Soil, Fertilizer, & Animal Feed
+    24: 3,   # Heat signs in cow → Animal Husbandry
+    25: 7,   # Housing/timber → Farming Equipment & Materials
+    26: 3,   # Breeding → Animal Husbandry
+    27: 3,   # Donkeys/elephants → Animal Husbandry
+    28: 7,   # Tractor/plough → Farming Equipment & Materials
+    29: 3,   # Vaccination → Animal Husbandry
+    30: 8,   # Water/drainage → Weather & Environment
+    31: 7,   # Irrigation/pumps → Farming Equipment & Materials
+    32: 3,   # Animal feed/food → Animal Husbandry
+    33: 1,   # Salt/mineral → Soil, Fertilizer, & Animal Feed
+    34: 2,   # Foot & Mouth → Pests & Disease
+    35: 2,   # Wilt/bacterial → Pests & Disease
+    36: 10,  # Sexual content → Personal Communication
+    37: 9,   # Wefarm champion → Wefarm Platform
+    38: 10,  # Winner/prize → Personal Communication
+    39: 1,   # Topdressing/fertilizer → Soil, Fertilizer, & Animal Feed
+    40: 1,   # Fertilizer usage → Soil, Fertilizer, & Animal Feed
+    41: 1,   # Manure/compost → Soil, Fertilizer, & Animal Feed
+    42: 7,   # Sprayer/litres → Farming Equipment & Materials
+    43: 1,   # Chemicals → Soil, Fertilizer, & Animal Feed
+    44: 1,   # Spraying → Soil, Fertilizer, & Animal Feed
+    45: 2    # Internal parasites → Pests & Disease
+}
+cluster_to_meta = {
+    46: 2,   # Medicine & disease → Pests & Disease
+    47: 2,   # Skin/eye issues in cows → Pests & Disease
+    48: 2,   # Pests → Pests & Disease
+    49: 1,   # Herbicides → Soil, Fertilizer, & Animal Feed
+    50: 1,   # Weeds → Soil, Fertilizer, & Animal Feed
+    51: 8,   # Rain & weather → Weather & Environment
+    52: 4,   # Fruits/flowers → Planting & Growth
+    53: 4,   # Leaf yellowing → Planting & Growth
+    54: 4,   # Nursery/seedbed → Planting & Growth
+    55: 3,   # Animal lifespan/birth → Animal Husbandry
+    56: 3,   # Deworming → Animal Husbandry
+    57: 4,   # Seeds/germination → Planting & Growth
+    58: 4,   # Seedlings/seedbed → Planting & Growth
+    59: 4,   # Harvesting → Planting & Growth
+    60: 4,   # Planting & growth → Planting & Growth
+    61: 9,   # Wefarm Uganda questions → Wefarm Platform
+    62: 9,   # Wefarm Kenya questions → Wefarm Platform
+    63: 10,  # Location inquiries → Personal Communication
+    64: 10,  # Joining groups → Personal Communication
+    65: 1,   # Agroforestry/agriculture → Soil, Fertilizer, & Animal Feed
+    66: -1,  # Ambiguous/general questions → Uncategorized
+    67: 9,   # Wefarm farmer/champion → Wefarm Platform
+    68: 10,  # Starting farming → Personal Communication
+    69: 1,   # Agriculture term/factors → Soil, Fertilizer, & Animal Feed
+    70: 10,  # Contact/phone → Personal Communication
+    71: 6,   # Capital/business → Finance & Loans
+    72: 6,   # Money/pay/help → Finance & Loans
+    73: 10,  # Questions/answers → Personal Communication
+    74: 5,   # Price/market → Markets
+    75: 1,   # Fertilizer bags → Soil, Fertilizer, & Animal Feed
+    76: 7,   # Land/acre/preparation → Farming Equipment & Materials
+    77: 9,   # Wefarm join/benefit → Wefarm Platform
+    78: 10,  # Greetings → Personal Communication
+    79: 10,  # English/Kiswahili/county → Personal Communication
+    80: 9,   # Wefarm offices/shop → Wefarm Platform
+    81: 3,   # Apiculture → Animal Husbandry
+    82: 1,   # Forestry/agroforestry → Soil, Fertilizer, & Animal Feed
+    83: 4,   # Pollination → Planting & Growth
+    84: 4,   # Grafting/staking → Planting & Growth
+    85: 2,   # Locust control → Pests & Disease
+    86: 7,   # Farm records → Farming Equipment & Materials
+    87: 4,   # Intercropping/monocropping → Planting & Growth
+    88: 4,   # Shifting cultivation → Planting & Growth
+    89: 3,   # Hay → Animal Husbandry
+    90: 3,   # Artificial insemination → Animal Husbandry
+}
+cluster_to_meta = {
+    91: 4,    # Photosynthesis → Planting & Growth
+    92: 4,    # Vanilla growing → Planting & Growth
+    93: 7,    # Tillage → Farming Equipment & Materials
+    94: 1,    # Soil leaching → Soil, Fertilizer, & Animal Feed
+    95: 3,    # Bloat → Animal Husbandry
+    96: 3,    # Anthrax → Animal Husbandry
+    97: 8,    # Bush burning → Weather & Environment
+    98: 4,    # Seed dormancy → Planting & Growth
+    99: 2,    # Aphids → Pests & Disease
+    100: 7,   # Fencing → Farming Equipment & Materials
+    101: 4,   # Horticulture → Planting & Growth
+    102: 3,   # East Coast Fever → Animal Husbandry
+    103: 3,   # Gumboro → Animal Husbandry
+    104: -1,  # Snakes, frogs → Uncategorized (or miscellaneous biology)
+    105: -1,  # AI services → Uncategorized (not clearly agri-related)
+    106: 1,   # Biogas → Soil, Fertilizer, & Animal Feed (energy input for farms)
+    107: 2,   # Banana wilt → Pests & Disease
+    108: 4,   # Cultivation → Planting & Growth
+    109: 8,   # Sanitation/environment → Weather & Environment
+    110: 1,   # Soil profile → Soil, Fertilizer, & Animal Feed
+    111: 1,   # Weed control → Soil, Fertilizer, & Animal Feed
+    112: 7,   # Tools → Farming Equipment & Materials
+    113: 4,   # Plantations → Planting & Growth
+    114: 1,   # Organic matter/farming → Soil, Fertilizer, & Animal Feed
+    115: 1,   # NPK → Soil, Fertilizer, & Animal Feed
+    116: 1,   # Foliar fertilizer → Soil, Fertilizer, & Animal Feed
+    117: 3,   # Sheep trimming → Animal Husbandry
+    118: 4,   # Dania → Planting & Growth
+    119: 1,   # Urea → Soil, Fertilizer, & Animal Feed
+    120: 1,   # Nitrogenous/phosphatic fertilizers → Soil, Fertilizer, & Animal Feed
+    121: 1,   # Nitrogen in soil → Soil, Fertilizer, & Animal Feed
+    122: 5,   # Simsim price → Markets
+    123: 1,   # Fertilizer application stage → Soil, Fertilizer, & Animal Feed
+    124: 4,   # Terracing/hilly areas → Planting & Growth
+    125: 10,  # Farmer questions → Personal Communication
+    126: 4,   # Swampy area planting → Planting & Growth
+    127: -1,  # Biology concepts → Uncategorized
+    128: 8,   # Seasons → Weather & Environment
+    129: 7,   # Machines → Farming Equipment & Materials
+    130: 4,   # Kitchen/garden → Planting & Growth
+}
+cluster_to_meta = {
+    131: 2,    # Weevils → Pests & Disease
+    132: 5,    # Vanilla price → Markets
+    133: 2,    # Parasites → Pests & Disease
+    134: 3,    # Production/quality → Animal Husbandry
+    135: 10,   # Football teams → Personal Communication
+    136: 10,   # Office locations → Personal Communication
+    137: 4,    # Hole/suckers/planting → Planting & Growth
+    138: 8,    # Water/floods → Weather & Environment
+    139: 9,    # Wefarm promotions → Wefarm Platform
+    140: 2,    # Dip/race/dipping → Pests & Disease
+    141: 1,    # Chemicals → Soil, Fertilizer, & Animal Feed
+    142: 1,    # Mix/ridomil/ox → Soil, Fertilizer, & Animal Feed
+    143: 3,    # Yields/farm improvement → Animal Husbandry
+    144: 2,    # Bedbugs → Pests & Disease
+    145: 9,    # Wefarm offices → Wefarm Platform
+    146: 3,    # Chicken feed/eggs → Animal Husbandry
+    147: 4,    # Roots/tubers/rooting → Planting & Growth
+    148: 5,    # African countries → Markets
+    149: 1,    # Food/freshian/omena → Soil, Fertilizer, & Animal Feed
+    150: 2,    # Coccidiosis/medicine → Pests & Disease
+    151: 4,    # Hybrid varieties → Planting & Growth
+    152: 10,   # Start/IDO → Personal Communication
+    153: 1,    # Rot/blossom end rot → Soil, Fertilizer, & Animal Feed
+    154: 1,    # Inputs/farmers → Soil, Fertilizer, & Animal Feed
+    155: 1,    # Blight/chemicals → Soil, Fertilizer, & Animal Feed
+    156: 3,    # Debeaking → Animal Husbandry
+    157: 10,   # Small projects → Personal Communication
+    158: 10,   # Procedures/methods → Personal Communication
+    159: 1,    # Dudu/vegemax/medicines → Soil, Fertilizer, & Animal Feed
+    160: 10,   # Farmer communication → Personal Communication
+    161: 10,   # Opt-out codes/questions → Personal Communication
+    162: 3,    # Sillage/preparing sty → Animal Husbandry
+    163: 6,    # Wefarm money/business → Finance & Loans
+    164: 1,    # Fungicide/fungal/blight → Soil, Fertilizer, & Animal Feed
+    165: 2,    # Storage pests/mosquito → Pests & Disease
+    166: 2,    # Weeds/weeding → Pests & Disease
+    167: 6,    # Benefit/program → Finance & Loans
+    168: 2,    # Kill/control/chemical → Pests & Disease
+    169: 2,    # Mites/spider → Pests & Disease
+    170: -1,   # Cough/flu/medicine → Uncategorized (human disease, not farm)
+    171: 3,    # Blood/stomach/hair in cows → Animal Husbandry
+    172: 3,    # Mating/natural/acow → Animal Husbandry
+    173: 4,    # Land selection → Planting & Growth
+    174: 5,    # Avocado/market → Markets
+    175: 4,    # Spacing/planting → Planting & Growth
+}
+cluster_to_meta = {
+    176: 5,    # Sugar/vanilla price → Markets
+    177: 4,    # Pilipili/hoho varieties → Planting & Growth
+    178: 3,    # Young animals → Animal Husbandry
+    179: 3,    # Animal reproductive questions → Animal Husbandry
+    180: 8,    # Dry/wet season → Weather & Environment
+    181: 1,    # Drying/dried matter → Soil, Fertilizer, & Animal Feed
+    182: 4,    # Vanilla growing/planting → Planting & Growth
+    183: 4,    # Seedlings/seed selection → Planting & Growth
+    184: 5,    # Seed sourcing/market → Markets
+    185: 5,    # F1 seed varieties/cost → Markets
+    186: 6,    # Starting a business/money → Finance & Loans
+    187: 9,    # General farming questions/farmers → Wefarm Platform
+    188: 4,    # How to start farming → Planting & Growth
+    189: 10,   # Languages spoken → Personal Communication
+    190: 10,   # Language use questions → Personal Communication
+    191: 3,    # Poultry keeping → Animal Husbandry
+    192: 8,    # Afforestation/deforestation → Weather & Environment
+    193: 10,   # Stop SMS/messages → Personal Communication
+    194: 10,   # Leaving group → Personal Communication
+    195: 10,   # Waiting for answers → Personal Communication
+    196: 9,    # Wefarm headquarters → Wefarm Platform
+    197: 10,   # Leaving/stopping Wefarm → Personal Communication
+    198: 9,    # Wefarm jobs → Wefarm Platform
+    199: 9,    # Wefarm founder/origin → Wefarm Platform
+    200: 10,   # Biblical/religious questions → Personal Communication
+    201: 10,   # Names → Personal Communication
+    202: 10,   # Problem/solution discussion → Personal Communication
+    203: 3,    # Artificial insemination → Animal Husbandry
+    204: 5,    # Prices/costs in markets → Markets
+    205: 5,    # Meat prices → Markets
+    206: 5,    # Locations/towns → Markets (or local info)
+    207: 5,    # Where to get products → Markets
+    208: 5,    # Locations near markets → Markets
+    209: 5,    # Bungoma locations → Markets
+    210: 1,    # Acronyms (NPK, UMEME) → Soil, Fertilizer, & Animal Feed
+    211: 10,   # How to get help → Personal Communication
+    212: 10,   # Love/friends greetings → Personal Communication
+    213: 10,   # Seeking lover/marriage → Personal Communication
+    214: 10,   # Troubleshooting/failures → Personal Communication
+    215: 10,   # "Wat/hw/meaning" general → Personal Communication
+    216: 10    # Local language expressions → Personal Communication
+}
