@@ -186,7 +186,8 @@ def summarize_clusters(
     extra_stop_words=None,
     sample_questions=0,      
     random_samples=False,    
-    preview=False             
+    preview=False,            
+    sort_by_size=False        
 ):
     """
     Generate keyword summaries for clusters, optionally including:
@@ -235,9 +236,8 @@ def summarize_clusters(
         # Optional sampled questions
         if sample_questions > 0:
             if random_samples:
-                samples = subset[text_col].sample(
-                    min(sample_questions, len(subset)),
-                    random_state=42
+                samples = subset[text_col].reset_index(drop=True).sample(
+                    min(sample_questions, len(subset))
                 ).tolist()
             else:
                 samples = subset[text_col].head(sample_questions).tolist()
@@ -247,6 +247,10 @@ def summarize_clusters(
         cluster_rows.append(row)
 
     summary_df = pd.DataFrame(cluster_rows)
+
+    # Sort by size if requested
+    if sort_by_size:
+        summary_df = summary_df.sort_values('size', ascending=False).reset_index(drop=True)
 
     # Optional formatted preview printing
     if preview:
@@ -262,6 +266,7 @@ def summarize_clusters(
 
     return summary_df
 
+
 # -------------------------------------------------------------------
 # Preview metacluster for quality check
 # -------------------------------------------------------------------
@@ -274,28 +279,13 @@ def metacluster_preview(df, metacluster_num: int = 0, meta_titles=None) -> None:
                            'meta_label', 'cluster', 'size', 'keywords', and optionally 'samples'.
         metacluster_num (int, optional): Index of the meta-cluster in `meta_titles`. Defaults to 0.
     """
-#     if meta_titles:
-#         meta_label = meta_titles[metacluster_num]
-#     else:
-#         meta_label = metacluster_num
-#     metacluster_df = df[df['meta_label'] == meta_label]
-
-#     print(f"Previewing Meta-cluster {metacluster_num}: {meta_label}")
-
-#     for _, row in metacluster_df.iterrows():
-#         print(f"\n=== Cluster {row['cluster']} (size={row['size']}) ===")
-#         print("Keywords:", row['keywords'])
-#         if 'samples' in row and row['samples']:
-#             print("Sample questions:")
-#             for question in row['samples']:
-#                 print("  -", question)
-
     if meta_titles:
         meta_label_title = meta_titles[metacluster_num]
     else:
         meta_label_title = metacluster_num
 
-    metacluster_df = df[df['meta_label'] == metacluster_num]
+    # Correct comparison here
+    metacluster_df = df[df['meta_label'] == meta_label_title]
 
     print(f"Previewing Meta-cluster {metacluster_num}: {meta_label_title}")
 
@@ -306,4 +296,5 @@ def metacluster_preview(df, metacluster_num: int = 0, meta_titles=None) -> None:
             print("Sample questions:")
             for question in row['samples']:
                 print("  -", question)
+
 
